@@ -1,6 +1,7 @@
 "use client";
-import PostSearch from "@/components/PostSearch";
-import Posts from "@/components/Posts";
+
+import { PostSearch } from "@/components/PostSearch";
+import { Posts } from "@/components/Posts";
 import { Metadata } from "next";
 import { useEffect } from "react";
 

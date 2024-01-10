@@ -1,13 +1,13 @@
-'use client';
-import {usePosts} from '@/store';
-import Link from 'next/link';
-import {useEffect} from 'react';
-import {shallow} from 'zustand/shallow';
+"use client";
+import { usePosts } from "@/store";
+import Link from "next/link";
+import { useEffect, memo } from "react";
+import { shallow } from "zustand/shallow";
 
-export default function Posts() {
+const PostsImpl = () => {
   const [posts, loading, getAllPosts] = usePosts(
-    state => [state.posts, state.loading, state.getAllPosts],
-    shallow,
+    (state) => [state.posts, state.loading, state.getAllPosts],
+    shallow
   );
 
   useEffect(() => {
@@ -25,4 +25,5 @@ export default function Posts() {
       ))}
     </ul>
   );
-}
+};
+export const Posts = memo(PostsImpl);

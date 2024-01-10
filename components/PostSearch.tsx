@@ -6,9 +6,10 @@ import {
   FormEventHandler,
   useCallback,
   useState,
+  memo,
 } from "react";
 
-export default function PostSearch() {
+const PostSearchImpl = () => {
   const [search, setSearch] = useState("");
   const getPostsBySearch = usePosts((state) => state.getPostsBySearch);
 
@@ -38,4 +39,6 @@ export default function PostSearch() {
       <button type="submit"> Search </button>
     </form>
   );
-}
+};
+
+export const PostSearch = memo(PostSearchImpl);
