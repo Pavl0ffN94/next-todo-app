@@ -1,8 +1,8 @@
-import { TheHeader } from "@/components/TheHeader";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { TheFooter } from "@/components/TheFooter";
+import TheHeader from "@/components/TheHeader";
 
 const inter = Inter({ subsets: ["cyrillic"] });
 

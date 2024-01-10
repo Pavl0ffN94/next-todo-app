@@ -1,14 +1,15 @@
-import Link from "next/link";
-import { memo } from "react";
+import { Navigation } from "./Navigation";
 
-const TheHeaderImpl = () => {
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
+];
+
+export default function TheHeader() {
   return (
     <header className="container">
-      <Link href="/"> Home</Link>
-      <Link href="/blog"> Blog</Link>
-      <Link href="/about"> About</Link>
+      <Navigation navLinks={navItems} />
     </header>
   );
-};
-
-export const TheHeader = memo(TheHeaderImpl);
+}
