@@ -1,5 +1,3 @@
-"use client";
-
 import { PostSearch } from "@/components/PostSearch";
 import { Posts } from "@/components/Posts";
 import { Metadata } from "next";
@@ -8,6 +6,8 @@ import { useEffect } from "react";
 export const metadata: Metadata = {
   title: "Blog | Next App",
 };
+
+export const revalidate = 10;
 
 export default function Blog() {
   return (

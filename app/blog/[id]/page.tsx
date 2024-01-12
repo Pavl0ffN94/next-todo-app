@@ -1,3 +1,4 @@
+import { getAllPosts } from "@/services/getPosts";
 import { Metadata } from "next";
 
 interface IProps {
@@ -6,14 +7,16 @@ interface IProps {
   };
 }
 
+export async function generateStaticParams() {
+  const posts: any[] = await getAllPosts();
+  return posts.map((post) => ({
+    slug: post.id.toString(),
+  }));
+}
+
 async function getData(id: string) {
   const responce = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${id}`,
-    {
-      next: {
-        revalidate: 60,
-      },
-    }
+    `https://jsonplaceholder.typicode.com/posts/${id}`
   );
 
   return await responce.json();
