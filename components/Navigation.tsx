@@ -1,8 +1,9 @@
 "use client";
 
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { memo } from "react";
+import { memo, useCallback } from "react";
 
 type NavLink = {
   label: string;
@@ -14,6 +15,9 @@ interface Iprops {
 
 const NavigationImpl = ({ navLinks }: Iprops) => {
   const pathname = usePathname();
+  const session = useSession();
+  console.log(session);
+
   return (
     <>
       {navLinks.map((link) => {
@@ -29,6 +33,21 @@ const NavigationImpl = ({ navLinks }: Iprops) => {
           </Link>
         );
       })}
+      {session?.data && <Link href="/profile">Profile</Link>}
+      {session?.data ? (
+        <Link
+          href="#"
+          onClick={() =>
+            signOut({
+              callbackUrl: "/",
+            })
+          }
+        >
+          Sign Out
+        </Link>
+      ) : (
+        <Link href="/signin">SignIn</Link>
+      )}
     </>
   );
 };
